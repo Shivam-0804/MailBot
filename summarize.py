@@ -6,7 +6,7 @@ import nltk
 
 # Ensure required resources are available
 # nltk.download('stopwords')
-# nltk.download('punkt')
+# nltk.download('punkt_tab')
 
 class TextSummarizer:
     def __init__(self, text):
