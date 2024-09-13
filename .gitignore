@@ -1,2 +1,3 @@
 .venv/
 nlp/__pycache__/
+credentials.json
