@@ -1,10 +1,10 @@
+"""frequency-based extraction summarization"""
 from collections import Counter
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem import PorterStemmer
 import nltk
 
-# Ensure required resources are available
 # nltk.download('stopwords')
 # nltk.download('punkt_tab')
 
@@ -31,6 +31,7 @@ class TextSummarizer:
         words = word_tokenize(self.text.lower())
         words = [stemmer.stem(word) for word in words if word.isalnum() and word not in stop_words]
         word_freq = Counter(words)
+        print(word_freq)
         return word_freq
 
     def calculate_sentence_scores(self):
@@ -51,29 +52,37 @@ class TextSummarizer:
         Generate a summary by selecting the top scoring sentences.
         """
         sorted_sentences = sorted(self.sentence_scores, key=self.sentence_scores.get, reverse=True)
-        num_sentences = min(num_sentences, len(sorted_sentences))  # Ensure not to exceed available sentences
+        num_sentences = min(num_sentences, len(sorted_sentences)) 
         summary = sorted_sentences[:num_sentences]
         return ' '.join(summary)
 
-# Example usage
 text = """
-Subject: Leave Application
+Dear Students,
 
-Dear Ms. Johnson,
+Smart India Hackathon (SIH) is one of the national level reputed Hackathons for the last many years. Details about SIH 2024 are available at https://www.sih.gov.in/.
 
-I hope this message finds you well. I am writing to request a leave of absence from August 28, 2024, to August 30, 2024, due to a personal matter that requires my attention.
+Internal Hackathon is the primary step for participation in SIH. Internal Hackathon is conducted at Institute Level where selected teams at Institute Level move to the next step of SIH. The guidelines about formation of teams are as follows:
 
-I have arranged for my colleague, Tom Brown, to manage any urgent tasks and ensure that my ongoing projects are on track. I will be available via email or phone for any critical issues.
+1. Each team needs to have exactly 6 students / members. 
+2. Each team must have at least 1 female member.
+3. Each team must have One Team Leader
+4. All the students in a team must be from JIIT-62 or 128.
 
-Please let me know if there is any further information you require or if there are specific tasks I should address before my leave.
+The Internal Hackathon for SIH 2024 at JIIT Noida will be conducted soon. Detailed instructions in this regard will be communicated soon. The Internal Hackathon will act as the qualifier round for entry in SIH - 2024. 
 
-Thank you for your understanding and support.
+As the first step for the Internal Hackathon, all teams need to register. All students are encouraged to make the teams (as per following guidelines) and complete the registration process by 14th September 2024 by filling the Google Form:
 
-Best regards,
+Link of Google Form: https://forms.gle/a7NWRiCfxMzxrACg7
 
-Emily Clarke
-Project Manager
-Marketing Department
+After registration, all important communication will be through email with the provided mail ID of the Team Leader. All are encouraged to register for the JIIT Noida's Internal Hackathon for SIH 2024
+
+With Good Wishes
+
+Prof. Manish Kumar Thakur (WhatsApp Number: 9667189911)
+Professor and Associate Head, Dept. of CSE & IT / JIIT SPOC for SIH 2024 
+
+Mr. Prantik Biswas (WhatsApp Number: 9836438182)
+Assistant Professor, Dept. of CSE & IT
 """
 
 summarizer = TextSummarizer(text)

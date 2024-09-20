@@ -1,0 +1,26 @@
+Text Summarizer:
+(frequency-based extraction summarization)
+Frequency-Based Scoring:
+* Word Frequency Calculation: Words are tokenized, stemmed, and stopwords are removed. The frequency of each word is counted.
+* Sentence Scoring: Each sentence is scored based on the sum of the frequencies of the words it contains. Sentences with higher frequencies of important words (according to their overall frequency in the text) get higher scores.
+
+
+Schedular (task extraction for to-do list):
+1. Text Classification Algorithm:
+* Naive Bayes Classifier (MultinomialNB):
+o Algorithm: MultinomialNB from scikit-learn is used for text classification. It is a probabilistic classifier based on Bayes' theorem with the assumption of independence between features.
+o Usage: It is applied to predict the labels (categories) for task descriptions.
+2. Feature Extraction:
+* TF-IDF Vectorization:
+o Algorithm: TfidfVectorizer from scikit-learn is used for converting text into numerical features. TF-IDF stands for Term Frequency-Inverse Document Frequency, which measures the importance of a word in a document relative to the entire dataset.
+o Usage: It transforms text data into a matrix of TF-IDF features for training and testing the Naive Bayes classifier.
+3. Natural Language Processing (NLP) Functions:
+* Extracting Dates and Times:
+o Function: extract_dates_times (assumed to be from nlp.basic_nlp module) is used to identify and extract dates and times from the input text.
+* Extracting Task:
+o Function: extract_task (also assumed to be from nlp.basic_nlp module) is used to identify and extract the main task description from the input text.
+Summary:
+* Text Classification: Naive Bayes Classifier (MultinomialNB)
+* Feature Extraction: TF-IDF Vectorizer (TfidfVectorizer)
+* NLP Tasks: Custom functions for extracting dates, times, and tasks from text.
+
