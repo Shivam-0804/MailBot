@@ -1,3 +1,5 @@
 .venv/
 nlp/__pycache__/
 credentials.json
+synopsis.docx
+mock_eval.docx
